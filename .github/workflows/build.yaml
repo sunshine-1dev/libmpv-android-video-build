@@ -72,8 +72,8 @@ jobs:
       - uses: softprops/action-gh-release@v1
         if: github.ref == 'refs/heads/main'
         with:
-          draft: true
+          draft: false
           prerelease: false
-          tag_name: "vnext"
+          tag_name: "pwxiao"
           files: |
             /home/runner/work/libmpv-android-video-build/libmpv-android-video-build/buildscripts/*.jar
