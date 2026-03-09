@@ -13,7 +13,7 @@ mkdir -p deps && cd deps
 [ ! -d dav1d ] && git clone --depth 1 --branch $v_dav1d https://code.videolan.org/videolan/dav1d.git dav1d
 
 # libxml2
-[ ! -d libxml2 ] && git clone --depth 1 --branch v$v_libxml2 --recursive https://gitlab.gnome.org/GNOME/libxml2.git libxml2
+[ ! -d libxml2 ] && git clone --depth 1 --branch v$v_libxml2 --recursive https://github.com/GNOME/libxml2.git libxml2
 
 # libogg
 [ ! -d libogg ] && $WGET https://github.com/xiph/ogg/releases/download/v${v_libogg}/libogg-${v_libogg}.tar.gz && tar -xf libogg-${v_libogg}.tar.gz && mv libogg-${v_libogg} libogg && rm libogg-${v_libogg}.tar.gz
@@ -42,6 +42,9 @@ mkdir -p deps && cd deps
 # libass
 [ ! -d libass ] && git clone --depth 1 --branch $v_libass https://github.com/libass/libass.git libass
 
+# lcms2
+[ ! -d lcms2 ] && git clone --depth 1 -b $v_lcms2 https://github.com/mm2/Little-CMS.git lcms2
+
 # shaderc
 mkdir -p shaderc
 cat >shaderc/README <<'HEREDOC'
@@ -49,8 +52,11 @@ Shaderc sources are provided by the NDK.
 see <ndk>/sources/third_party/shaderc
 HEREDOC
 
+# libplacebo
+[ ! -d libplacebo ] && git clone --recurse-submodules https://code.videolan.org/videolan/libplacebo.git libplacebo && cd libplacebo && git reset --hard c93aa134ab62365ce1177efff99b8e1e66a818e7 && cd ..
+
 # mpv
-[ ! -d mpv ] && git clone https://github.com/mpv-player/mpv.git mpv && cd mpv && git reset --hard 78d43740f52db817d98bcf24fb30a76ab6fa13ff && cd ..
+[ ! -d mpv ] && git clone https://github.com/mpv-player/mpv.git mpv && cd mpv && git reset --hard 32a164cc017acab50389f2194f720ccfd0b01a28 && cd ..
 
 # fftools_ffi
 [ ! -d fftools_ffi ] && git clone --branch main https://github.com/moffatman/fftools-ffi.git fftools_ffi && cd fftools_ffi && git reset --hard 10070acb2c090edda86dba431f6c281145ceb221 && cd ..
